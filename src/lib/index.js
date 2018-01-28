@@ -1,8 +1,3 @@
-import Example from './components/Example';
-import SecondExample from './components/SecondExample';
+import MultiSelect from './multiSelect';
 
-export default Example;
-
-export {
-  SecondExample,
-};
+export default MultiSelect;
