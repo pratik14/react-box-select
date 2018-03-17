@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { sortArray } from './utils'
+import Option from './option'
 
 export default class SelectBox extends React.Component {
   constructor(props) {
@@ -29,13 +31,13 @@ export default class SelectBox extends React.Component {
 
     return (
       options.map(option => (
-        <li
+        <Option
+          type={type}
+          option={option}
           key={option[id]}
-          className={`ms-elem-${type}`}
-          onClick={() => this.handleClick(option)}
-        >
-          {option[label]}
-        </li>
+          text={option[label]}
+          handleClick={() => this.handleClick(option)}
+        />
       ))
     );
   }
