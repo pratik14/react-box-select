@@ -15,11 +15,12 @@ export default class MultiSelect extends React.Component {
       options,
     };
 
+    this.handleClick = this.handleClick.bind(this);
+    this.renderToggleAll = this.renderToggleAll.bind(this);
     this.selectedOptions = this.selectedOptions.bind(this);
     this.handleSelectAll = this.handleSelectAll.bind(this);
     this.selectableOptions = this.selectableOptions.bind(this);
     this.handleUnSelectAll = this.handleUnSelectAll.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
 
@@ -59,11 +60,25 @@ export default class MultiSelect extends React.Component {
     this.setState({ options })
   }
 
+  renderToggleAll(){
+    const { showSelectAllBtn } = this.props;
+    if(!showSelectAllBtn){ return }
+
+    return(
+      <div className="action">
+        <span onClick={this.handleSelectAll}>Select All</span>/
+        <span onClick={this.handleUnSelectAll}>UnSelect All</span>
+      </div>
+    )
+  }
+
   render() {
     const { selectors } = this.props;
 
     return (
       <div className="ms-container">
+        { this.renderToggleAll() }
+
         <SelectBox
           type={'selectable'}
           selectors={selectors}
@@ -77,11 +92,6 @@ export default class MultiSelect extends React.Component {
           options={this.selectedOptions()}
           handleClick={this.handleClick}
         />
-
-        <div className="action">
-          <span onClick={this.handleSelectAll}>Select All</span>/
-          <span onClick={this.handleUnSelectAll}>UnSelect All</span>
-        </div>
       </div>
     );
   }
@@ -91,11 +101,13 @@ MultiSelect.propTypes = {
   onSelect: PropTypes.func,
   onDeSelect: PropTypes.func,
   selectors: PropTypes.object,
+  showSelectAllBtn: PropTypes.bool,
   options: PropTypes.array.isRequired,
 };
 
 MultiSelect.defaultProps = {
   onSelect: () => {},
   onDeSelect: () => {},
+  showSelectAllBtn: false,
   selectors: {id: 'id', label: 'label'}
 }

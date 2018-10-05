@@ -5,11 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 class App extends PureComponent {
   render(){
-    const options = [
-      { id: 1, label: 'Hi' },
-      { id: 2, label: 'Hello', selected: true },
-      { id: 3, label: 'Bye' }
-    ]
+    var step, options = [];
+    for (step = 1; step < 100; step++) {
+      options.push({id: step, label: 'Element ' + step})
+    }
 
     return(
       <div>
@@ -25,13 +24,17 @@ class App extends PureComponent {
               <p><a href="#">Link</a></p>
               <p><a href="#">Link</a></p>
             </div>
-            <div className="col-sm-8 text-left">
-
-            <MultiSelect
-              options={options}
-           />
-
+            <div className="col-sm-2 text-left" />
+            <div className="col-sm-4 text-left">
+              <MultiSelect
+                options={options}
+              />
+              <MultiSelect
+                options={options}
+                showSelectAllBtn={true}
+              />
             </div>
+            <div className="col-sm-2 text-left" />
             <div className="col-sm-2 sidenav">
               <div className="well">
                 <p>ADS</p>

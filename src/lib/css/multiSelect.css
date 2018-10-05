@@ -1,6 +1,16 @@
 .ms-container{
+  margin: 2%;
   background: transparent url('./../images/switch.png') no-repeat 50% 50%;
-  width: 370px;
+}
+
+.ms-container .action{
+  text-align: center;
+}
+
+.ms-container .action span{
+  margin: 1%;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .ms-container:after{
