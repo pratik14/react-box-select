@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import SelectBox from './selectBox';
-import { toggleObject } from './utils';
 
 import './css/multiSelect.css';
 
@@ -10,76 +9,73 @@ export default class MultiSelect extends React.Component {
   constructor(props) {
     super(props);
 
-    const { selectedOptions, selectableOptions } = props
+    const { options } = props
+
     this.state = {
-      selectedOptions: selectedOptions,
-      selectableOptions: selectableOptions,
-      allOptions: [...selectedOptions, ...selectableOptions],
+      options,
     };
 
-
+    this.selectedOptions = this.selectedOptions.bind(this);
     this.handleSelectAll = this.handleSelectAll.bind(this);
+    this.selectableOptions = this.selectableOptions.bind(this);
     this.handleUnSelectAll = this.handleUnSelectAll.bind(this);
-    this.handleOptionClick = this.handleOptionClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { selectedOptions, selectableOptions } = nextProps
-    this.setState({ selectedOptions, selectableOptions });
+
+  selectedOptions(){
+    return this.state.options.filter(o => o.selected );
   }
 
-  handleOptionClick(option, selectionType) {
-    const { selectors } = this.props
-    const { selectedOptions, selectableOptions } = this.state;
-    const selectableList = toggleObject(selectableOptions, selectors.id, option);
-    const selectedList = toggleObject(selectedOptions, selectors.id, option);
+  selectableOptions(){
+    return this.state.options.filter(o => !o.selected );
+  }
 
-    this.setState({
-      selectableOptions: selectableList,
-      selectedOptions: selectedList,
-    });
+  handleClick(option, selectionType) {
+    const { options } = this.state;
+    const opt = options.find(obj => { return obj.id === option.id });
+
 
     if (selectionType === 'selectable') {
-      this.props.onSelect([option]);
+      option.selected = true;
+      this.props.onSelect([opt]);
     } else {
-      this.props.onDeSelect([option]);
+      option.selected = false;
+      this.props.onDeSelect([opt]);
     }
+
+    this.setState({ options })
   }
 
   handleSelectAll() {
-    const { allOptions, selectableOptions } = this.state;
-
-    this.setState({
-      selectableOptions: [],
-      selectedOptions: allOptions,
-    });
-    this.props.onSelect(selectableOptions);
+    const { options } = this.state;
+    options.map(o => o.selected = true)
+    this.setState({ options })
   }
 
   handleUnSelectAll() {
-    const { allOptions, selectedOptions } = this.state;
-    this.setState({
-      selectedOptions: [],
-      selectableOptions: allOptions,
-    });
-    this.props.onDeSelect(selectedOptions);
+    const { options } = this.state;
+    options.map(o => o.selected = false)
+    this.setState({ options })
   }
 
   render() {
+    const { selectors } = this.props;
+
     return (
       <div className="ms-container">
         <SelectBox
           type={'selectable'}
-          selectors={this.props.selectors}
-          options={this.state.selectableOptions}
-          handleOptionClick={this.handleOptionClick}
+          selectors={selectors}
+          options={this.selectableOptions()}
+          handleClick={this.handleClick}
         />
 
         <SelectBox
           type={'selected'}
-          selectors={this.props.selectors}
-          options={this.state.selectedOptions}
-          handleOptionClick={this.handleOptionClick}
+          selectors={selectors}
+          options={this.selectedOptions()}
+          handleClick={this.handleClick}
         />
 
         <div className="action">
@@ -95,8 +91,7 @@ MultiSelect.propTypes = {
   onSelect: PropTypes.func,
   onDeSelect: PropTypes.func,
   selectors: PropTypes.object,
-  selectedOptions: PropTypes.array.isRequired,
-  selectableOptions: PropTypes.array.isRequired,
+  options: PropTypes.array.isRequired,
 };
 
 MultiSelect.defaultProps = {

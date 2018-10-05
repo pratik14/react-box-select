@@ -21,7 +21,7 @@ export default class SelectBox extends React.Component {
   }
 
   handleClick(clickedOption) {
-    this.props.handleOptionClick(clickedOption, this.props.type);
+    this.props.handleClick(clickedOption, this.props.type);
   }
 
   renderList() {
@@ -56,5 +56,5 @@ export default class SelectBox extends React.Component {
 SelectBox.propTypes = {
   type: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
-  handleOptionClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };

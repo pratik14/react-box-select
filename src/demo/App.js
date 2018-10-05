@@ -5,13 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 class App extends PureComponent {
   render(){
-    const selectableOptions = [
-      { id: 1, label: 'Hi'},
-      { id: 3, label: 'Bye'}
-    ]
-
-    const selectedOptions = [
-      { id: 2, label: 'Hello'}
+    const options = [
+      { id: 1, label: 'Hi' },
+      { id: 2, label: 'Hello', selected: true },
+      { id: 3, label: 'Bye' }
     ]
 
     return(
@@ -29,10 +26,11 @@ class App extends PureComponent {
               <p><a href="#">Link</a></p>
             </div>
             <div className="col-sm-8 text-left">
+
             <MultiSelect
-              selectedOptions={selectedOptions}
-              selectableOptions={selectableOptions}
+              options={options}
            />
+
             </div>
             <div className="col-sm-2 sidenav">
               <div className="well">
