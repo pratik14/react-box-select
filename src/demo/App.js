@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import MultiSelect from "../lib";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./style.css";
+import "./custom-bootstrap.css";
 
 class App extends PureComponent {
   options() {
@@ -15,15 +16,15 @@ class App extends PureComponent {
   renderGettingStarted() {
     return (
       <div>
-        <h3>Getting Started</h3>
+        <h3 className="border-bottom">Getting Started</h3>
 
         <p>
           Start by installing react-select
           <pre>{`yarn add react-select`}</pre>
         </p>
 
-        <p>
-          Import the default export and render in your component:
+        <p>Import the default export and render in your component:</p>
+        <div className="col-md-7 padding-left-0">
           <pre>
             {`
 import React, { Component } from 'react';
@@ -37,7 +38,10 @@ for (step = 1; step < 100; step++) {
 <MultiSelect options={options} />
 `}
           </pre>
-        </p>
+        </div>
+        <div className="col-md-5">
+          <MultiSelect options={this.options()} />
+        </div>
       </div>
     );
   }
@@ -45,7 +49,8 @@ for (step = 1; step < 100; step++) {
   renderProps() {
     return (
       <div>
-        <h3> Props </h3>
+        <br />
+        <h3 className="border-bottom">Props</h3>
         <table className="table table-bordered">
           <thead>
             <tr>
@@ -95,21 +100,53 @@ for (step = 1; step < 100; step++) {
   renderDemos() {
     return (
       <div>
-        <h3>Demos</h3>
+        <h3 className="border-bottom">Demos</h3>
 
-        <b>Select/Unselect All Button</b>
-        <MultiSelect options={this.options()} showSelectAllBtn={true} />
+        <br />
+        <p>Select/Unselect All Button</p>
+        <div className="col-md-7 padding-left-0">
+          <pre>
+            {`
+<MultiSelect
+  options={...options()}
+  showSelectAllBtn={true}
+/>
+`}
+          </pre>
+        </div>
+        <div className="col-md-5">
+          <MultiSelect options={this.options()} showSelectAllBtn={true} />
+        </div>
 
-        <b>Callback</b>
-        <MultiSelect
-          options={this.options()}
-          onSelect={val => {
-            alert("Selected label:" + val.label);
-          }}
-          onDeSelect={val => {
-            alert("Deselected label:" + val.label);
-          }}
-        />
+        <br />
+        <br />
+        <p>Callback</p>
+        <div className="col-md-7 padding-left-0">
+          <pre>
+            {`
+<MultiSelect
+  options={...options}
+  onSelect={val => {
+    alert("Selected label:" + val.label);
+  }}
+  onDeSelect={val => {
+    alert("Deselected label:" + val.label);
+  }}
+/>
+`}
+          </pre>
+        </div>
+        <div className="col-md-5">
+          <MultiSelect
+            options={this.options()}
+            onSelect={val => {
+              alert("Selected label:" + val.label);
+            }}
+            onDeSelect={val => {
+              alert("Deselected label:" + val.label);
+            }}
+          />
+        </div>
       </div>
     );
   }
@@ -117,22 +154,21 @@ for (step = 1; step < 100; step++) {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-light bg-light">
-          <h2>React Multiselect</h2>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <span class="navbar-brand">React MultiSelect</span>
+          </div>
         </nav>
-
+        <br />
         <div className="container-fluid text-center">
           <div className="row">
-            <div className="col-md-3" />
-            <div className="col-md-6 text-left">
+            <div className="col-md-2" />
+            <div className="col-md-8 text-left">
               <div className="col-md-12">{this.renderGettingStarted()}</div>
-              <div className="col-md-12">
-                <MultiSelect options={this.options()} />
-              </div>
               <div className="col-md-12">{this.renderProps()}</div>
               <div className="col-md-12">{this.renderDemos()}</div>
             </div>
-            <div className="col-md-3" />
+            <div className="col-md-2" />
           </div>
         </div>
       </div>
