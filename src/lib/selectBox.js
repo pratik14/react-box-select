@@ -1,60 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { sortArray } from './utils'
-import Option from './option'
+import { sortArray } from './utils';
+import Option from './option';
 
 export default class SelectBox extends React.Component {
   constructor(props) {
-  	super(props);
-
-  	this.state = {
-      options: props.options,
-    };
+    super(props);
 
     this.renderList = this.renderList.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ options: nextProps.options });
-  }
-
   handleClick(clickedOption) {
-    this.props.handleClick(clickedOption, this.props.type);
+    const { handleClick, type } = this.props;
+    handleClick(clickedOption, type);
   }
 
   renderList() {
-    const { id, label } = this.props.selectors;
-    let { type, options } = this.props;
+    let { options } = this.props;
+    const { type, selectors } = this.props;
+    const { id, label } = selectors;
+
     options = sortArray(options, label);
 
-    return (
-      options.map(option => (
-        <Option
-          type={type}
-          option={option}
-          key={option[id]}
-          text={option[label]}
-          handleClick={() => this.handleClick(option)}
-        />
-      ))
-    );
+    return options.map(option => (
+      <Option
+        type={type}
+        option={option}
+        key={option[id]}
+        text={option[label]}
+        handleClick={() => this.handleClick(option)}
+      />
+    ));
   }
 
   render() {
+    const { type } = this.props;
     return (
-      <div className={`ms-${this.props.type}`}>
-        <ul className="ms-list">
-          { this.renderList()}
-        </ul>
+      <div className={`ms-${type}`}>
+        <ul className="ms-list">{this.renderList()}</ul>
       </div>
     );
   }
 }
 
 SelectBox.propTypes = {
+  selectors: PropTypes.shape({
+    id: PropTypes.string,
+    label: PropTypes.string,
+  }).isRequired,
   type: PropTypes.string.isRequired,
-  options: PropTypes.array.isRequired,
+  options: PropTypes.arrayOf().isRequired,
   handleClick: PropTypes.func.isRequired,
 };

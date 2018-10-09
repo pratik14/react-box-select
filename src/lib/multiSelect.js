@@ -1,18 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
+/* eslint-disable no-param-reassign */
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import SelectBox from "./selectBox";
+import SelectBox from './selectBox';
 
-import "./css/multiSelect.css";
+import './css/multiSelect.css';
 
 export default class MultiSelect extends React.Component {
   constructor(props) {
     super(props);
 
-    const {options} = props;
+    const { options } = props;
 
     this.state = {
-      options
+      options,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -24,76 +25,88 @@ export default class MultiSelect extends React.Component {
   }
 
   selectedOptions() {
-    return this.state.options.filter(o => o.selected);
+    const { options } = this.state;
+    return options.filter(o => o.selected);
   }
 
   selectableOptions() {
-    return this.state.options.filter(o => !o.selected);
+    const { options } = this.state;
+    return options.filter(o => !o.selected);
   }
 
   handleClick(option, selectionType) {
-    const {options} = this.state;
-    const opt = options.find(obj => {
-      return obj.id === option.id;
-    });
+    const { options } = this.state;
+    const { onSelect, onDeSelect } = this.props;
+    const opt = options.find(obj => obj.id === option.id);
 
-    if (selectionType === "selectable") {
-      option.selected = true;
-      this.props.onSelect(opt);
+    if (selectionType === 'selectable') {
+      opt.selected = true;
+      onSelect(opt);
     } else {
-      option.selected = false;
-      this.props.onDeSelect(opt);
+      opt.selected = false;
+      onDeSelect(opt);
     }
 
-    this.setState({options});
+    this.setState({ options });
   }
 
   handleSelectAll() {
-    const {options} = this.state;
-    options.map(o => (o.selected = true));
-    this.setState({options});
+    const { options } = this.state;
+    options.forEach((o) => {
+      o.selected = true;
+    });
+    this.setState({ options });
   }
 
   handleUnSelectAll() {
-    const {options} = this.state;
-    options.map(o => (o.selected = false));
-    this.setState({options});
+    const { options } = this.state;
+    options.forEach((o) => {
+      o.selected = false;
+    });
+    this.setState({ options });
   }
 
   renderToggleAll() {
-    const {showSelectAllBtn} = this.props;
+    const { showSelectAllBtn } = this.props;
     if (!showSelectAllBtn) {
-      return;
+      return <div />;
     }
 
     return (
       <div className="action">
-        <span onClick={this.handleSelectAll}>Select All</span>/
-        <span onClick={this.handleUnSelectAll}>UnSelect All</span>
+        <a href onClick={this.handleSelectAll}>
+          {' '}
+          Select All
+          {' '}
+        </a>
+        /
+        <a href onClick={this.handleUnSelectAll}>
+          UnSelect All
+        </a>
       </div>
     );
   }
 
   render() {
-    const {selectors} = this.props;
+    const { selectors } = this.props;
 
     return (
       <div className="ms-container">
+        {' '}
         {this.renderToggleAll()}
-
         <SelectBox
-          type={"selectable"}
+          type="selectable"
           selectors={selectors}
           options={this.selectableOptions()}
           handleClick={this.handleClick}
         />
-
         <SelectBox
-          type={"selected"}
+          type="selected"
           selectors={selectors}
           options={this.selectedOptions()}
           handleClick={this.handleClick}
         />
+        {' '}
       </div>
     );
   }
@@ -102,14 +115,17 @@ export default class MultiSelect extends React.Component {
 MultiSelect.propTypes = {
   onSelect: PropTypes.func,
   onDeSelect: PropTypes.func,
-  selectors: PropTypes.object,
+  selectors: PropTypes.shape({ id: PropTypes.string, label: PropTypes.string }),
   showSelectAllBtn: PropTypes.bool,
-  options: PropTypes.array.isRequired
+  options: PropTypes.arrayOf().isRequired,
 };
 
 MultiSelect.defaultProps = {
   onSelect: () => {},
   onDeSelect: () => {},
   showSelectAllBtn: false,
-  selectors: {id: "id", label: "label"}
+  selectors: {
+    id: 'id',
+    label: 'label',
+  },
 };
