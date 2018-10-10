@@ -20,7 +20,8 @@
   "homepage": "https://github.com/pratik14/react-multiselect#readme",
   "license": "MIT",
   "dependencies": {
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "react-test-renderer": "^16.5.2"
   },
   "devDependencies": {
     "autoprefixer": "7.1.6",
@@ -35,6 +36,8 @@
     "copy-webpack-plugin": "^4.5.0",
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-loader": "1.9.0",
@@ -71,6 +74,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
     ],
+    "setupTestFrameworkScriptFile": "./src/lib/tests/setupTests.js",
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
     ],

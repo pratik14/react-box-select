@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SelectBox /> should render without crashing 1`] = `
+<div
+  className="ms-selectable"
+>
+  <ul
+    className="ms-list"
+  >
+    <li
+      className="ms-elem-selectable"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+    >
+      Element 1
+       
+    </li>
+    <li
+      className="ms-elem-selectable"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+    >
+      Element 2
+       
+    </li>
+    <li
+      className="ms-elem-selectable"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+    >
+      Element 3
+       
+    </li>
+    <li
+      className="ms-elem-selectable"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+    >
+      Element 4
+       
+    </li>
+    <li
+      className="ms-elem-selectable"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+    >
+      Element 5
+       
+    </li>
+    <li
+      className="ms-elem-selectable"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+    >
+      Element 6
+       
+    </li>
+    <li
+      className="ms-elem-selectable"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+    >
+      Element 7
+       
+    </li>
+    <li
+      className="ms-elem-selectable"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+    >
+      Element 8
+       
+    </li>
+    <li
+      className="ms-elem-selectable"
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      role="button"
+    >
+      Element 9
+       
+    </li>
+  </ul>
+</div>
+`;

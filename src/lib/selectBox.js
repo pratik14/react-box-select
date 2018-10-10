@@ -9,10 +9,10 @@ export default class SelectBox extends React.Component {
     super(props);
 
     this.renderList = this.renderList.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleOptionClick = this.handleOptionClick.bind(this);
   }
 
-  handleClick(clickedOption) {
+  handleOptionClick(clickedOption) {
     const { handleClick, type } = this.props;
     handleClick(clickedOption, type);
   }
@@ -30,7 +30,7 @@ export default class SelectBox extends React.Component {
         option={option}
         key={option[id]}
         text={option[label]}
-        handleClick={() => this.handleClick(option)}
+        handleClick={() => this.handleOptionClick(option)}
       />
     ));
   }
@@ -51,6 +51,6 @@ SelectBox.propTypes = {
     label: PropTypes.string,
   }).isRequired,
   type: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf().isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   handleClick: PropTypes.func.isRequired,
 };

@@ -74,13 +74,13 @@ export default class MultiSelect extends React.Component {
 
     return (
       <div className="action">
-        <a href onClick={this.handleSelectAll}>
+        <a href id="selectAll" onClick={this.handleSelectAll}>
           {' '}
           Select All
           {' '}
         </a>
         /
-        <a href onClick={this.handleUnSelectAll}>
+        <a href id="unSelectAll" onClick={this.handleUnSelectAll}>
           UnSelect All
         </a>
       </div>
@@ -117,7 +117,7 @@ MultiSelect.propTypes = {
   onDeSelect: PropTypes.func,
   selectors: PropTypes.shape({ id: PropTypes.string, label: PropTypes.string }),
   showSelectAllBtn: PropTypes.bool,
-  options: PropTypes.arrayOf().isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 MultiSelect.defaultProps = {
