@@ -8,6 +8,10 @@ export default class Option extends React.PureComponent {
       option, text, type, handleClick,
     } = this.props;
 
+    if (option.disabled) {
+      return <li className={`ms-elem-${type} disabled`}>{text}</li>;
+    }
+
     return (
       <li
         role="button"
@@ -26,6 +30,7 @@ Option.propTypes = {
   option: PropTypes.shape({
     id: PropTypes.string,
     label: PropTypes.string,
+    disabled: PropTypes.bool,
   }).isRequired,
   text: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

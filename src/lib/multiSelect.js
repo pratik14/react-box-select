@@ -53,7 +53,9 @@ export default class MultiSelect extends React.Component {
   handleSelectAll() {
     const { options } = this.state;
     options.forEach((o) => {
-      o.selected = true;
+      if (!o.disabled) {
+        o.selected = true;
+      }
     });
     this.setState({ options });
   }
@@ -61,7 +63,9 @@ export default class MultiSelect extends React.Component {
   handleUnSelectAll() {
     const { options } = this.state;
     options.forEach((o) => {
-      o.selected = false;
+      if (!o.disabled) {
+        o.selected = false;
+      }
     });
     this.setState({ options });
   }

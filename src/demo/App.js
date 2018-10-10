@@ -16,6 +16,9 @@ class App extends PureComponent {
   }
 
   static renderGettingStarted() {
+    const options = App.options();
+    options[4].disabled = true;
+
     return (
       <div>
         <h3 className="border-bottom">Getting Started</h3>
@@ -42,7 +45,7 @@ for (step = 1; step < 100; step++) {
           </pre>
         </div>
         <div className="col-md-5">
-          <MultiSelect options={App.options()} />
+          <MultiSelect options={options} />
         </div>
       </div>
     );
@@ -92,6 +95,14 @@ for (step = 1; step < 100; step++) {
                 <code>false</code>
               </td>
               <td>Show/Hide select/deselect all button.</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>bool</td>
+              <td>
+                <code>false</code>
+              </td>
+              <td>disable option</td>
             </tr>
           </tbody>
         </table>
