@@ -15,6 +15,7 @@ export default class Option extends React.PureComponent {
     return (
       <li
         role="button"
+        tabIndex="-1"
         onKeyUp={() => undefined}
         className={`ms-elem-${type}`}
         onClick={() => handleClick(option)}

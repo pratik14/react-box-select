@@ -10,7 +10,7 @@ class App extends PureComponent {
 
     const options = [];
     for (step = 1; step < 10; step += 1) {
-      options.push({ id: step, label: `Element ${step}` });
+      options.push({ id: `${step}`, label: `Element ${step}` });
     }
     return options;
   }
@@ -23,10 +23,8 @@ class App extends PureComponent {
       <div>
         <h3 className="border-bottom">Getting Started</h3>
 
-        <p>
-          Start by installing react-select
-          <pre>yarn add react-select</pre>
-        </p>
+        <p>Start by installing react-select</p>
+        <pre>yarn add react-select</pre>
 
         <p>Import the default export and render in your component:</p>
         <div className="col-md-7 padding-left-0">
