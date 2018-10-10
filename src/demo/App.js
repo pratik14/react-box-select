@@ -67,7 +67,7 @@ for (step = 1; step < 100; step++) {
           </thead>
           <tbody>
             <tr>
-              <td>afterSelect</td>
+              <td>onChange</td>
               <td>function</td>
               <td>
                 <code>
@@ -75,10 +75,10 @@ for (step = 1; step < 100; step++) {
                   {}
                 </code>
               </td>
-              <td>Function to call after one item is selected.</td>
+              <td>returns updated list after option is selected/deselected</td>
             </tr>
             <tr>
-              <td>afterDeselect</td>
+              <td>onSelect</td>
               <td>function</td>
               <td>
                 <code>
@@ -86,7 +86,18 @@ for (step = 1; step < 100; step++) {
                   {}
                 </code>
               </td>
-              <td>Function to call after one item is deselected.</td>
+              <td>returns selected option</td>
+            </tr>
+            <tr>
+              <td>onDeselect</td>
+              <td>function</td>
+              <td>
+                <code>
+                  function()
+                  {}
+                </code>
+              </td>
+              <td>returns deselected options</td>
             </tr>
             <tr>
               <td>showSelectAllBtn</td>
@@ -94,7 +105,7 @@ for (step = 1; step < 100; step++) {
               <td>
                 <code>false</code>
               </td>
-              <td>Show/Hide select/deselect all button.</td>
+              <td>show/hide select/deselect all link</td>
             </tr>
             <tr>
               <td>disabled</td>
@@ -139,6 +150,9 @@ for (step = 1; step < 100; step++) {
             {`
 <MultiSelect
   options={...options}
+  onChange={(updatedOption) => {
+    console.log(updatedOption);
+  }}
   onSelect={val => {
     alert("Selected label:" + val.label);
   }}
@@ -152,6 +166,9 @@ for (step = 1; step < 100; step++) {
         <div className="col-md-5">
           <MultiSelect
             options={App.options()}
+            onChange={(updatedOption) => {
+              console.log(updatedOption);
+            }}
             onSelect={(val) => {
               alert(`Selected label:${val.label}`);
             }}

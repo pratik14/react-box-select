@@ -36,7 +36,7 @@ export default class MultiSelect extends React.Component {
 
   handleClick(option, selectionType) {
     const { options } = this.state;
-    const { onSelect, onDeSelect } = this.props;
+    const { onSelect, onDeSelect, onChange } = this.props;
     const opt = options.find(obj => obj.id === option.id);
 
     if (selectionType === 'selectable') {
@@ -48,6 +48,8 @@ export default class MultiSelect extends React.Component {
     }
 
     this.setState({ options });
+
+    onChange(options);
   }
 
   handleSelectAll() {
@@ -117,6 +119,7 @@ export default class MultiSelect extends React.Component {
 }
 
 MultiSelect.propTypes = {
+  onChange: PropTypes.func,
   onSelect: PropTypes.func,
   onDeSelect: PropTypes.func,
   selectors: PropTypes.shape({ id: PropTypes.string, label: PropTypes.string }),
@@ -125,6 +128,7 @@ MultiSelect.propTypes = {
 };
 
 MultiSelect.defaultProps = {
+  onChange: () => {},
   onSelect: () => {},
   onDeSelect: () => {},
   showSelectAllBtn: false,
