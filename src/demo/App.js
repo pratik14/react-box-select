@@ -1,26 +1,28 @@
-import React, {PureComponent} from "react";
-import MultiSelect from "../lib";
-import "./style.css";
-import "./custom-bootstrap.css";
+/* eslint-disable no-alert */
+import React, { PureComponent } from 'react';
+import MultiSelect from '../lib';
+import './style.css';
+import './custom-bootstrap.css';
 
 class App extends PureComponent {
-  options() {
-    var step,
-      options = [];
-    for (step = 1; step < 10; step++) {
-      options.push({id: step, label: "Element " + step});
+  static options() {
+    let step;
+
+    const options = [];
+    for (step = 1; step < 10; step += 1) {
+      options.push({ id: step, label: `Element ${step}` });
     }
     return options;
   }
 
-  renderGettingStarted() {
+  static renderGettingStarted() {
     return (
       <div>
         <h3 className="border-bottom">Getting Started</h3>
 
         <p>
           Start by installing react-select
-          <pre>{`yarn add react-select`}</pre>
+          <pre>yarn add react-select</pre>
         </p>
 
         <p>Import the default export and render in your component:</p>
@@ -40,13 +42,13 @@ for (step = 1; step < 100; step++) {
           </pre>
         </div>
         <div className="col-md-5">
-          <MultiSelect options={this.options()} />
+          <MultiSelect options={App.options()} />
         </div>
       </div>
     );
   }
 
-  renderProps() {
+  static renderProps() {
     return (
       <div>
         <br />
@@ -97,7 +99,7 @@ for (step = 1; step < 100; step++) {
     );
   }
 
-  renderDemos() {
+  static renderDemos() {
     return (
       <div>
         <h3 className="border-bottom">Demos</h3>
@@ -115,7 +117,7 @@ for (step = 1; step < 100; step++) {
           </pre>
         </div>
         <div className="col-md-5">
-          <MultiSelect options={this.options()} showSelectAllBtn={true} />
+          <MultiSelect options={App.options()} showSelectAllBtn />
         </div>
 
         <br />
@@ -138,12 +140,12 @@ for (step = 1; step < 100; step++) {
         </div>
         <div className="col-md-5">
           <MultiSelect
-            options={this.options()}
-            onSelect={val => {
-              alert("Selected label:" + val.label);
+            options={App.options()}
+            onSelect={(val) => {
+              alert(`Selected label:${val.label}`);
             }}
-            onDeSelect={val => {
-              alert("Deselected label:" + val.label);
+            onDeSelect={(val) => {
+              alert(`Deselected label:${val.label}`);
             }}
           />
         </div>
@@ -154,9 +156,9 @@ for (step = 1; step < 100; step++) {
   render() {
     return (
       <div>
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <span class="navbar-brand">React MultiSelect</span>
+        <nav className="navbar navbar-default">
+          <div className="container-fluid">
+            <span className="navbar-brand">React MultiSelect</span>
           </div>
         </nav>
         <br />
@@ -164,9 +166,9 @@ for (step = 1; step < 100; step++) {
           <div className="row">
             <div className="col-md-2" />
             <div className="col-md-8 text-left">
-              <div className="col-md-12">{this.renderGettingStarted()}</div>
-              <div className="col-md-12">{this.renderProps()}</div>
-              <div className="col-md-12">{this.renderDemos()}</div>
+              <div className="col-md-12">{App.renderGettingStarted()}</div>
+              <div className="col-md-12">{App.renderProps()}</div>
+              <div className="col-md-12">{App.renderDemos()}</div>
             </div>
             <div className="col-md-2" />
           </div>
