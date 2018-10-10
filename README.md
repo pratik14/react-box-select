@@ -7,6 +7,9 @@ React-Multiselect
 
 A Multiselect control built with and for [React](http://facebook.github.io/react/index.html). 
 
+![react-multiselect 1](https://user-images.githubusercontent.com/330668/46741441-a5ab7880-ccc2-11e8-95bd-e79dcfce25e0.gif)
+
+
 ## Demo & Examples
 
 Live demo: [https://pratik14.github.io/react-multiselect/](https://pratik14.github.io/react-multiselect/)
