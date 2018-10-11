@@ -7,7 +7,7 @@
   text-align: center;
 }
 
-.ms-container .action span{
+.ms-container .action a{
   margin: 1%;
   cursor: pointer;
   text-decoration: underline;
