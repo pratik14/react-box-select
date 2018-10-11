@@ -1,6 +1,7 @@
 # WIP-Multiselect widget for React
 
 [![Build Status](https://travis-ci.org/pratik14/react-multiselect.svg?branch=master)](https://travis-ci.org/pratik14/react-multiselect)
+[![Coverage Status](https://coveralls.io/repos/github/pratik14/react-multiselect/badge.svg?branch=master)](https://coveralls.io/github/pratik14/react-multiselect?branch=master)
 
 React-Multiselect
 ============
