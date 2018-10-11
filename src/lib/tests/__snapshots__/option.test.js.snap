@@ -1,11 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Option /> #disabled 1`] = `
+<li
+  className="ms-elem-selectable disabled"
+>
+  One
+</li>
+`;
+
 exports[`<Option /> should render without crashing 1`] = `
 <li
   className="ms-elem-selectable"
   onClick={[Function]}
-  onKeyUp={[Function]}
-  role="button"
 >
   One
    

@@ -37,4 +37,20 @@ describe('<Option />', () => {
     expect(mockCallback.mock.calls.length).toBe(1);
     expect(mockCallback).toBeCalledWith(option);
   });
+
+  it('#disabled', () => {
+    option.disabled = true;
+    const tree = renderer
+      .create(
+        <Option
+          type="selectable"
+          option={option}
+          text={option.label}
+          handleClick={() => {}}
+        />,
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

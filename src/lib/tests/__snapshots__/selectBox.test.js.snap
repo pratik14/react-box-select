@@ -10,8 +10,6 @@ exports[`<SelectBox /> should render without crashing 1`] = `
     <li
       className="ms-elem-selectable"
       onClick={[Function]}
-      onKeyUp={[Function]}
-      role="button"
     >
       Element 1
        
@@ -19,8 +17,6 @@ exports[`<SelectBox /> should render without crashing 1`] = `
     <li
       className="ms-elem-selectable"
       onClick={[Function]}
-      onKeyUp={[Function]}
-      role="button"
     >
       Element 2
        
@@ -28,8 +24,6 @@ exports[`<SelectBox /> should render without crashing 1`] = `
     <li
       className="ms-elem-selectable"
       onClick={[Function]}
-      onKeyUp={[Function]}
-      role="button"
     >
       Element 3
        
@@ -37,8 +31,6 @@ exports[`<SelectBox /> should render without crashing 1`] = `
     <li
       className="ms-elem-selectable"
       onClick={[Function]}
-      onKeyUp={[Function]}
-      role="button"
     >
       Element 4
        
@@ -46,8 +38,6 @@ exports[`<SelectBox /> should render without crashing 1`] = `
     <li
       className="ms-elem-selectable"
       onClick={[Function]}
-      onKeyUp={[Function]}
-      role="button"
     >
       Element 5
        
@@ -55,8 +45,6 @@ exports[`<SelectBox /> should render without crashing 1`] = `
     <li
       className="ms-elem-selectable"
       onClick={[Function]}
-      onKeyUp={[Function]}
-      role="button"
     >
       Element 6
        
@@ -64,8 +52,6 @@ exports[`<SelectBox /> should render without crashing 1`] = `
     <li
       className="ms-elem-selectable"
       onClick={[Function]}
-      onKeyUp={[Function]}
-      role="button"
     >
       Element 7
        
@@ -73,8 +59,6 @@ exports[`<SelectBox /> should render without crashing 1`] = `
     <li
       className="ms-elem-selectable"
       onClick={[Function]}
-      onKeyUp={[Function]}
-      role="button"
     >
       Element 8
        
@@ -82,8 +66,6 @@ exports[`<SelectBox /> should render without crashing 1`] = `
     <li
       className="ms-elem-selectable"
       onClick={[Function]}
-      onKeyUp={[Function]}
-      role="button"
     >
       Element 9
        
