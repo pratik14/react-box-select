@@ -23,15 +23,15 @@ class App extends PureComponent {
       <div>
         <h3 className="border-bottom">Getting Started</h3>
 
-        <p>Start by installing react-select</p>
-        <pre>yarn add react-select</pre>
+        <p>Start by installing react-box-select</p>
+        <pre>yarn add react-box-select</pre>
 
         <p>Import the default export and render in your component:</p>
         <div className="col-md-7 padding-left-0">
           <pre>
             {`
 import React, { Component } from 'react';
-import Select from 'react-select'
+import Select from 'react-box-select'
 
 var step, options = [];
 for (step = 1; step < 100; step++) {
@@ -184,7 +184,7 @@ for (step = 1; step < 100; step++) {
       <div>
         <nav className="navbar navbar-default">
           <div className="container-fluid">
-            <span className="navbar-brand">React MultiSelect</span>
+            <span className="navbar-brand">React BoxSelect</span>
           </div>
         </nav>
         <br />

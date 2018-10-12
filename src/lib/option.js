@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 
