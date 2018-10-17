@@ -31,7 +31,8 @@ class App extends PureComponent {
           <pre>
             {`
 import React, { Component } from 'react';
-import Select from 'react-box-select'
+import MultiSelect from 'react-box-select'
+import 'react-box-select/build/css/index.css';
 
 var step, options = [];
 for (step = 1; step < 100; step++) {
