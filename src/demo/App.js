@@ -186,6 +186,11 @@ for (step = 1; step < 100; step++) {
         <nav className="navbar navbar-default">
           <div className="container-fluid">
             <span className="navbar-brand">React BoxSelect</span>
+            <span className="navbar-brand">
+              <a className="github-button pull-right" href="https://github.com/pratik14/react-box-select">
+                Github
+              </a>
+            </span>
           </div>
         </nav>
         <br />
